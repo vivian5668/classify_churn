@@ -1,4 +1,4 @@
-# classify_churn
+# Churn Classification
 
 The problem is churn prediction with a fictional company that provides ride-share in Game of Thrones. If a certain user is predicted to churn, potentially a coupon or other marketing mechanisim could be sent.
 
@@ -32,7 +32,7 @@ I am interested in the independent variables that contribute to the dependent va
 
 note: the y-axis is in log odds units
 
-# Data
+## Data
 a sample dataset of a cohort of users who signed up for an account in January 2014. The data was pulled on July
 1, 2014; we consider a user retained if they were “active” (i.e. took a trip) in the preceding 30 days (from the day the data was pulled). In other words, a user is "active" if they have taken a trip since June 1, 2014.
 
