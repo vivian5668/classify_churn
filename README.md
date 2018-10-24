@@ -15,7 +15,7 @@ Upon first scan of data, I determined that last_trp_date should not be an indepe
 ## NAs
 There were NAs for 'avg_rating_of_driver', 'avg_rating_by_driver', and 'phone'. I filled the NAs with 0, which is different from any of the other values in the columns. And A new column is added for each indicating where there was an NA, i.e. "'avg_rating_of_driver_isNA".
 
-##Gradient Boosting Hyperparameter Tuning
+## Gradient Boosting Hyperparameter Tuning
  - n_estimator should be the where the log loss for testing data is the lowest. 
  See plot in jupyter notebook 'Conclusions'. The optimal n_estimator is 550.
  - sub-sampling in default setting is 1, which is no sampling. I changed it to 0.5. an empirically adequate value. 
