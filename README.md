@@ -6,8 +6,13 @@ We consider that a user has churned when the service has not been used for over 
 
 ## General Approach
 1. Data_Exploration.ipynb outlines the EDA process
+    > Link https://nbviewer.jupyter.org/github/vivian5668/classify_churn/blob/master/Data_Exploration.ipynb
 2. data_transform.py is a pipeline that cleans and transforms the data
+    > link
+    https://github.com/vivian5668/classify_churn/blob/master/data_transform.py
 3. Conclusions.ipynb builds out models and draws conclusions on how to potentially lower churn rate by targeting customers with specific traits
+    > Link
+    https://nbviewer.jupyter.org/github/vivian5668/classify_churn/blob/master/Conclusions.ipynb
 
 ## Data Leakage
 Upon first scan of data, I determined that last_trp_date should not be an independent variable in the model. The super correlation between last_trip_date and prediction conclusion is considered dta leakage.
