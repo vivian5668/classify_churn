@@ -1,6 +1,6 @@
 # Churn Classification
 
-The problem is churn prediction with a fictional company that provides ride-share in Game of Thrones. If a certain user is predicted to churn, potentially a coupon or other marketing mechanisim could be sent.
+The problem is churn prediction with a fictional company that provides ride-share in Game of Thrones. If a certain user is predicted to churn, potentially a coupon or other marketing mechanisim could be sent to prevent churn.
 
 We consider that a user has churned when the service has not been used for over a month. For this dataset, the cutoff date is June 1. See data details towards the end of this readme.
 
@@ -15,13 +15,13 @@ We consider that a user has churned when the service has not been used for over 
     https://nbviewer.jupyter.org/github/vivian5668/classify_churn/blob/master/Conclusions.ipynb
 
 ## Data Leakage
-Upon first scan of data, I determined that last_trp_date should not be an independent variable in the model. The super correlation between last_trip_date and prediction conclusion is considered dta leakage.
+Upon first scan of data, I determined that last_trp_date should not be an independent variable in the model. The strong correlation between last_trip_date and prediction conclusion is considered dta leakage. So last_trp_date is removed in the training and testing data.
 
 ## NAs
 There were NAs for 'avg_rating_of_driver', 'avg_rating_by_driver', and 'phone'. I filled the NAs with 0, which is different from any of the other values in the columns. And A new column is added for each indicating where there was an NA, i.e. "'avg_rating_of_driver_isNA".
 
 ## Gradient Boosting Hyperparameter Tuning
- - n_estimator should be the where the log loss for testing data is the lowest. 
+ - n_estimator should be the where the log loss for validation data is the lowest. 
  See plot in jupyter notebook 'Conclusions'. The optimal n_estimator is 550.
  - sub-sampling in default setting is 1, which is no sampling. I changed it to 0.5. an empirically adequate value. 
  The resulting log loss has been improved a little compared to the previous default setting.
@@ -29,11 +29,12 @@ There were NAs for 'avg_rating_of_driver', 'avg_rating_by_driver', and 'phone'. 
 ## Partial Dependence Plot
 I am interested in the independent variables that contribute to the dependent variable most. Feature importance in a model can only show the feature importance relative ranking in the realm of that particular model. Partial Dependence plot will be used to better show the relationship I am looking for.
 
--- Interesting discoveries
+## Interesting discoveries
 - As average rating by driver increases, a customer is less likely to churn, until the rating hits 5. A possible reasoning could be that 5-star customers haven't had many trips. Maybe they are just trying it out, hence not loyal customers. Marketing material could potentially target this group to retain this group's interest
 
 - Average surge doesn't appear to affect churn rate much
-- trips in first 30 days has interesting ups and downs with an overall trend of increasing chance of churn. Attractive promotions are generally given for new customers. Some price-customers will stop using the app once promotion is used, hence the upward segments; some customers are retained in the process, hence the downward segments. A potential move to keep the price-concious segment of customers might be individualized coupon per month instead of giving all the promotions within the first month. 
+
+- trips in first 30 days has interesting ups and downs with an overall trend of increasing chance of churn. Attractive promotions are generally given for new customers. Some price-conscious customers will stop using the app once promotion is used, hence the upward segments; some customers are retained in the process, hence the downward segments. A potential move to keep the price-concious segment of customers might be individualized coupon per month instead of giving out all the promotions within the first month. 
 
 note: the y-axis is in log odds units
 
